@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <head>
+    <meta name="description" content="{{ site.description }}" />
+    <meta name="author" content="{{ site.title }}" />
+    <meta name="keywords" content="{{ site.keywords }}" />
+    <koken:title />
+    <koken:settings />
+  </head>
+  <body>
+    <header>
+      <h1>{{ site.title }}</h1>
+      <nav>
+       <koken:navigation />
+      </nav>
+    </header>
+    <koken:load>
+      <h1>{{ page.title }}</h1>
+      {{ page.content }}
+    <koken:else>
+     <koken:note>
+       No page found
+      </koken:note>
+    </koken:load>
+    <footer>
+      {{ site.copyright }}
+    </footer>
+  </body>
+</html>

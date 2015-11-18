@@ -1,0 +1,10 @@
+{
+	"name": "BYOT: Part three",
+	"version": "1.0",
+	"description": "Templates used in our 'Build your own theme' tutorial.",
+	"demo": "http://help.koken.me/customer/portal/articles/828691-build-your-own-theme",
+	"author": {
+		"name": "Sebastian Pinehurst",
+		"link": "http://koken.me"
+	}
+}

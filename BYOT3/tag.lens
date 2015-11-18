@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+	<meta name="description" content="{{ site.description }}" />
+	<meta name="author" content="{{ site.title }}" />
+	<meta name="keywords" content="{{ site.keywords }}" />
+	<koken:title />
+	<koken:settings />
+</head>
+<body>
+<koken:load>
+	<header>
+	  <h1>{{ site.title }}</h1>
+	  <nav>
+	   <koken:navigation />
+	  </nav>
+	</header>
+	<koken:breadcrumbs />
+	<h1>Most recent content tagged #{{ tag.title }}</h1>
+	<ol class="list">
+		<koken:loop>
+			<li>
+				<koken:event>
+					<koken:event_album>
+						<koken:link>
+							<koken:img />
+						</koken:link>
+						<h3>
+							<koken:link>
+								{{ album.title }}
+							</koken:link>
+						</h3>
+						<p>
+							{{ album.summary }}
+						</p>
+						<koken:tags>
+							<p>
+								<koken:loop>
+										<koken:link to="tag">
+											#{{ tag.title }}
+										</koken:link>
+								</koken:loop>
+							</p>
+						</koken:tags>
+						<koken:categories>
+							<p>
+					        	<strong>{{ labels.category.plural }}:</strong>
+						        <koken:loop separator=", ">
+						          <koken:link to="category">
+						            {{ category.title }}
+						          </koken:link>
+						        </koken:loop>
+							</p>
+					      </koken:categories>
+					</koken:event_album>
+					<koken:event_album_update>
+						<koken:loop>
+							<koken:img />
+						</koken:loop>
+						<h2>{{ album.title }} ({{ content.length }} new items)</h2>
+						<p>
+							{{ album.summary }}
+						</p>
+					</koken:event_album_update>
+					<koken:event_content>
+						<koken:content_image>
+							<koken:link>
+								<koken:img />
+							</koken:link>
+						</koken:content_image>
+						<koken:content_video>
+							<koken:video />
+						</koken:content_video>
+						<h3>
+							<koken:link>
+								{{ content.title | content.filename }}
+							</koken:link>
+						</h3>
+						<p>
+							{{ content.caption }}
+						</p>
+					</koken:event_content>
+					<koken:event_essay>
+							<koken:featured_image>
+								<koken:link>
+									<koken:img />
+								</koken:link>
+							</koken:featured_image>
+						<h3>
+							<koken:link>
+								{{ essay.title }}
+							</koken:link>
+						</h3>
+						<p>
+							{{ essay.excerpt }}
+						</p>
+						<koken:tags>
+							<p>
+								<koken:loop>
+									<koken:link to="tag">
+										#{{ tag.title }}
+									</koken:link>
+								</koken:loop>
+							</p>
+						</koken:tags>
+						<koken:categories>
+							<p>
+					        	<strong>{{ labels.category.plural }}:</strong>
+						        <koken:loop separator=", ">
+						          <koken:link to="category">
+						            {{ category.title }}
+						          </koken:link>
+						        </koken:loop>
+							</p>
+					      </koken:categories>
+					</koken:event_essay>
+				</koken:event>
+			</li>
+		</koken:loop>
+	</ol>
+	<koken:pagination limit="20">
+		<koken:pagination_previous>
+			<koken:link title="Previous">
+				&larr;
+			</koken:link>
+		</koken:pagination_previous>
+		<koken:pagination_limited_previous>
+			<koken:link>
+				...
+			</koken:link>
+		</koken:pagination_limited_previous>
+		<koken:loop>
+			<koken:link class="{{ is_current }}" title="{{ number }}">
+				{{ number }}
+			</koken:link>
+		</koken:loop>
+		<koken:pagination_limited_next>
+			<koken:link>
+				...
+			</koken:link>
+		</koken:pagination_limited_next>
+		<koken:pagination_next>
+			<koken:link title="Next">
+				&rarr;
+			</koken:link>
+		</koken:pagination_next>
+	</koken:pagination>
+<koken:else>
+  <koken:note>
+    No timeline data found.
+  </koken:note>
+</koken:load>
+</body>
+</html>

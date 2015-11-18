@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<meta name="description" content="{{ site.description }}" />
+	<meta name="author" content="{{ site.title }}" />
+	<meta name="keywords" content="{{ site.keywords }}" />
+	<koken:title />
+	<koken:settings />
+</head>
+<body>
+<header>
+	<h1>{{ site.title }}</h1>
+	<nav>
+		<koken:navigation />
+	</nav>
+</header>
+<koken:load>
+	<p>
+		<koken:link to="archive">
+			<koken:time />
+		</koken:link>
+	</p>
+	<h2> {{ content.title | content.filename }} </h2>
+	<koken:content_image>
+		<koken:img />
+	</koken:content_image>
+	<koken:content_video>
+		<koken:video />
+	</koken:content_video>
+	{{ content.caption paragraphs="true" }}
+	<koken:tags>
+		<koken:loop separator=" ">
+			<koken:link>
+				#{{ tag.title }}
+			</koken:link>
+		</koken:loop>
+	</koken:tags>
+	<koken:categories>
+		<strong>Categories:</strong>
+		<koken:loop separator=", ">
+			<koken:link>
+				{{ category.title }}
+			</koken:link>
+		</koken:loop>
+	</koken:categories>
+<koken:else>
+  <koken:note>
+    No image or video found
+  </koken:note>
+</koken:load>
+<footer>
+  {{ site.copyright }}
+</footer>
+</body>
+</html>
